@@ -2940,71 +2940,37 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     background: none;
 }
 
-/* 23. Course Boxes - Minimal Enhancement
+/* 23. Course Boxes - Verbesserungen für UX und Responsiveness
 /* ---------------------------------------------------------- */
 
 .gh-container + .gh-container {
     margin-top: 0;
 }
 
-/* Course Boxes Optimization - Modern Card Design */
+/* Allgemeines Layout der Boxen-Sektion */
 .gh-course-boxes {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 2rem;
-    margin-top: 0;
+    gap: 3rem; /* Vergrößerter Abstand für mehr Luft */
+    margin-top: 4rem; /* Mehr Abstand nach oben */
     margin-bottom: 4rem;
 }
 
-/* Force display grid on desktop to override any conflicting .gh-feed rules */
-@media (min-width: 1024px) {
-    .gh-feed.gh-course-boxes {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-}
-
-/* Ensure the container section is visible */
-section:has(.gh-course-boxes) {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* Alternative for browsers without :has() support */
-.gh-container.gh-outer,
-.gh-container-inner.gh-inner {
-    display: block !important;
-    visibility: visible !important;
-}
-
-/* Specific rule for course boxes container */
-.gh-container:has(.gh-course-boxes),
-.gh-container-inner:has(.gh-course-boxes) {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* Course Box Cards */
+/* Styling der einzelnen Boxen (Karten) */
 .gh-course-boxes .gh-card {
     background: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Weicherer, modernerer Schatten */
     transition: all 0.3s ease;
     overflow: hidden;
-    height: 100%;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    display: flex; /* Stellt sicher, dass alle Boxen die gleiche Höhe haben */
+    flex-direction: column;
 }
 
 .gh-course-boxes .gh-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-color: var(--ghost-accent-color);
 }
 
@@ -3016,93 +2982,97 @@ section:has(.gh-course-boxes) {
     color: inherit;
 }
 
+/* Innenleben der Boxen */
 .gh-course-boxes .gh-card-wrapper {
-    padding: 2.5rem 2rem;
+    padding: 2.5rem; /* Mehr Innenabstand für mehr Weißraum */
     display: flex;
     flex-direction: column;
     text-align: center;
-    height: 100%;
+    flex-grow: 1; /* Sorgt dafür, dass der Inhalt wächst und der Button unten bleibt */
 }
 
+/* Titel in den Boxen */
 .gh-course-boxes .gh-card-title {
-    font-size: 1.9rem;
+    font-size: 2.2rem; /* Deutlich vergrößerte Schrift */
     font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--color-darkgrey);
+    margin-bottom: 1.5rem; /* Mehr Abstand nach unten */
+    color: var(--color-darker-gray);
     line-height: 1.3;
 }
 
+/* Beschreibungstext in den Boxen */
 .gh-course-boxes .gh-card-excerpt {
-    flex-grow: 1;
-    margin-bottom: 1.5rem;
-    color: var(--color-midgrey);
+    flex-grow: 1; /* Schiebt den Button nach unten */
+    margin-bottom: 2rem; /* Mehr Abstand zum Button */
+    color: var(--color-secondary-text);
     line-height: 1.6;
-    font-size: 1.6rem;
+    font-size: 1.6rem; /* Vergrößerte, lesbarere Schrift */
+    display: block !important; /* Stellt sicher, dass der Text immer sichtbar ist */
 }
 
+/* Button-Bereich */
 .gh-course-boxes .gh-card-meta {
-    margin-top: auto;
-    padding-top: 1rem;
+    margin-top: auto; /* Stellt sicher, dass der Button am unteren Rand ausgerichtet ist */
+    padding-top: 1.5rem;
 }
 
+/* Button-Styling */
 .gh-course-boxes .gh-card-meta span {
     display: inline-flex;
     align-items: center;
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 2rem; /* Vergrößerter Button */
     background: var(--ghost-accent-color);
     color: white;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.6rem; /* Vergrößerte Schrift im Button */
     transition: all 0.3s ease;
 }
 
 .gh-course-boxes .gh-card:hover .gh-card-meta span {
-    filter: brightness(0.85);
+    background: var(--color-darker-gray);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Mobile: 1 Spalte */
+/* NEU: Geklickter Zustand des Buttons */
+.gh-course-boxes .gh-card-link:active .gh-card-meta span {
+    background-color: #E0C56E; /* Helles Gold für Klick-Feedback */
+    transform: scale(1); /* Setzt den Hover-Effekt beim Klicken zurück */
+}
+
+/* Tablet-Ansicht: 2 Spalten für eine bessere Darstellung */
+@media (max-width: 1023px) {
+    .gh-course-boxes {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem;
+    }
+}
+
+/* Mobile-Ansicht: 1 Spalte */
 @media (max-width: 767px) {
     .gh-course-boxes {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        margin-top: 2rem;
         margin-bottom: 3rem;
     }
     
     .gh-course-boxes .gh-card-wrapper {
-        padding: 2rem 1.5rem;
+        padding: 2rem; /* Angepasster Innenabstand für Mobile */
     }
     
     .gh-course-boxes .gh-card-title {
-        font-size: 1.6rem;
+        font-size: 2rem; /* Angepasste Titelgröße */
     }
-    
+
     .gh-course-boxes .gh-card-excerpt {
-        font-size: 1.4rem;
+        font-size: 1.5rem; /* Angepasste Textgröße */
+        margin-bottom: 1.5rem;
     }
-    
+
     .gh-course-boxes .gh-card-meta span {
-        font-size: 1.2rem;
+        width: 100%; /* Button füllt die Breite, um Überlappung zu verhindern */
+        justify-content: center; /* Text im Button zentrieren */
+        padding: 1.2rem;
     }
 }
-
-/* Tablet: 2 Spalten */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .gh-course-boxes {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-}
-
-/* Ensure equal card heights */
-@media (min-width: 768px) {
-    .gh-course-boxes .gh-card {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-/* Responsive */
-/* Removed conflicting rule - course-boxes now uses dedicated CSS class
