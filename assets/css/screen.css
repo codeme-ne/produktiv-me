@@ -3025,7 +3025,7 @@ section:has(.gh-course-boxes) {
 }
 
 .gh-course-boxes .gh-card-title {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--color-darkgrey);
@@ -3037,7 +3037,7 @@ section:has(.gh-course-boxes) {
     margin-bottom: 1.5rem;
     color: var(--color-midgrey);
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 
 .gh-course-boxes .gh-card-meta {
@@ -3053,13 +3053,14 @@ section:has(.gh-course-boxes) {
     color: white;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     transition: all 0.3s ease;
 }
 
 .gh-course-boxes .gh-card:hover .gh-card-meta span {
-    background: var(--color-darkgrey);
+    filter: brightness(0.85);
     transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Mobile: 1 Spalte */
@@ -3075,7 +3076,15 @@ section:has(.gh-course-boxes) {
     }
     
     .gh-course-boxes .gh-card-title {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
+    }
+    
+    .gh-course-boxes .gh-card-excerpt {
+        font-size: 1.4rem;
+    }
+    
+    .gh-course-boxes .gh-card-meta span {
+        font-size: 1.2rem;
     }
 }
 

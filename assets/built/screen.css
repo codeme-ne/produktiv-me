@@ -1,4 +1,4 @@
-/* Table of contents
+Table of contents
 /* ------------------------------------------------------------
 
 This is a development CSS file which is built to a minified
@@ -1360,16 +1360,6 @@ Search                         LOGO                    Login Subscribe
     margin-top: 8px;
 }
 
-.gh-featured-feed .gh-card::before {
-    position: absolute;
-    top: 0;
-    left: calc(var(--grid-gap) / -2);
-    content: "";
-    width: 1px;
-    height: 100%;
-    background-color: var(--color-border);
-}
-
 @media (max-width: 1199px) {
     .gh-viewport > .gh-featured .gh-featured-feed {
         grid-template-columns: repeat(3, 1fr);
@@ -1565,26 +1555,6 @@ Search                         LOGO                    Login Subscribe
     grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
     row-gap: calc(var(--grid-gap) * 1.5);
     overflow: hidden;
-}
-
-.gh-container.is-grid .gh-card::before {
-    position: absolute;
-    top: calc(var(--grid-gap) / -2);
-    right: calc(var(--grid-gap) / -2);
-    left: calc(var(--grid-gap) / -2);
-    content: "";
-    height: 1px;
-    background-color: var(--color-border);
-}
-
-.gh-container.is-grid .gh-card::after {
-    position: absolute;
-    top: 0;
-    left: calc(var(--grid-gap) / -2);
-    content: "";
-    width: 1px;
-    height: 100%;
-    background-color: var(--color-border);
 }
 
 @media (max-width: 767px) {
@@ -3055,7 +3025,7 @@ section:has(.gh-course-boxes) {
 }
 
 .gh-course-boxes .gh-card-title {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--color-darkgrey);
@@ -3067,7 +3037,7 @@ section:has(.gh-course-boxes) {
     margin-bottom: 1.5rem;
     color: var(--color-midgrey);
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 
 .gh-course-boxes .gh-card-meta {
@@ -3083,13 +3053,14 @@ section:has(.gh-course-boxes) {
     color: white;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     transition: all 0.3s ease;
 }
 
 .gh-course-boxes .gh-card:hover .gh-card-meta span {
-    background: var(--color-darkgrey);
+    filter: brightness(0.85);
     transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Mobile: 1 Spalte */
@@ -3105,7 +3076,15 @@ section:has(.gh-course-boxes) {
     }
     
     .gh-course-boxes .gh-card-title {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
+    }
+    
+    .gh-course-boxes .gh-card-excerpt {
+        font-size: 1.4rem;
+    }
+    
+    .gh-course-boxes .gh-card-meta span {
+        font-size: 1.2rem;
     }
 }
 
@@ -3126,4 +3105,4 @@ section:has(.gh-course-boxes) {
 }
 
 /* Responsive */
-/* Removed conflicting rule - course-boxes now uses dedicated CSS class */
+/* Removed conflicting rule - course-boxes now uses dedicated CSS class
