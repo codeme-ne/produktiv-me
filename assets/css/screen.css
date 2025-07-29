@@ -2949,11 +2949,43 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 
 /* Course Boxes Optimization - Modern Card Design */
 .gh-course-boxes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem;
     margin-top: 0;
     margin-bottom: 4rem;
+}
+
+/* Force display grid on desktop to override any conflicting .gh-feed rules */
+@media (min-width: 1024px) {
+    .gh-feed.gh-course-boxes {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Ensure the container section is visible */
+section:has(.gh-course-boxes) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Alternative for browsers without :has() support */
+.gh-container.gh-outer,
+.gh-container-inner.gh-inner {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Specific rule for course boxes container */
+.gh-container:has(.gh-course-boxes),
+.gh-container-inner:has(.gh-course-boxes) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Course Box Cards */
@@ -2965,6 +2997,9 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     transition: all 0.3s ease;
     overflow: hidden;
     height: 100%;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .gh-course-boxes .gh-card:hover {
